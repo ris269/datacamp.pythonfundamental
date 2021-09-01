@@ -1,2 +1,3 @@
 # datacamp.pythonfundamental
-Documents and notebooks of Datacamp/PythonFundamentals
+Documents, notebooks and exercise of Datacamp/PythonFundamentals
+Just code 4 fun.
