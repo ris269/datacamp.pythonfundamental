@@ -462,7 +462,6 @@ print(counts_dict)
 #### Writing an iterator to load data in chunks (1)
 '''
 Writing an iterator to load data in chunks (1)
-100xp
 Another way to read data too large to store in memory in chunks is to read the file in as
 DataFrames of a certain length, say, 100. For example, with the pandas package (imported as pd),
 you can do pd.read_csv(filename, chunksize=100). This creates an iterable reader object, which
@@ -489,7 +488,7 @@ print(next(df_reader))
 
 '''
 Writing an iterator to load data in chunks (2)
-100xp
+
 In the previous exercise, you used read_csv() to read in DataFrame chunks from a large dataset.
 In this exercise, you will read in a file using a bigger DataFrame chunk size and then process
 the data from the first chunk.
@@ -619,7 +618,7 @@ for df_urb_pop in urb_pop_reader:
     pops_list = list(pops)
 
     # Use list comprehension to create new DataFrame column 'Total Urban Population'
-    df_pop_ceb['Total Urban Population'] = [int(tup[0] * tup[1]) for tup in pops_list]
+    df_pop_ceb['Total Urban Population'] = [int(tup[0] * tup[1] * 0.01) for tup in pops_list]
     
     # Append DataFrame chunk to data: data
     data = data.append(df_pop_ceb)
@@ -656,6 +655,7 @@ process and second is country_code for the country to be processed in the datase
 -Call plot_pop() to process the data for country code 'CEB' in the file 'ind_pop_data.csv'.
 -Call plot_pop() to process the data for country code 'ARB' in the file 'ind_pop_data.csv'.
 '''
+
 # Define plot_pop()
 def plot_pop(filename, country_code):
 
@@ -678,7 +678,7 @@ def plot_pop(filename, country_code):
         pops_list = list(pops)
 
         # Use list comprehension to create new DataFrame column 'Total Urban Population'
-        df_pop_ceb['Total Urban Population'] = [int(tup[0] * tup[1]) for tup in pops_list]
+        df_pop_ceb['Total Urban Population'] = [int(tup[0] * tup[1] * 0.01) for tup in pops_list]
     
         # Append DataFrame chunk to data: data
         data = data.append(df_pop_ceb)
@@ -695,5 +695,6 @@ plot_pop(fn, 'CEB')
 
 # Call plot_pop for country code 'ARB'
 plot_pop(fn, 'ARB')
+
 
 
